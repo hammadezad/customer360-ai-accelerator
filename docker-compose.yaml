@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  email-composer:
+    build: ./email-composer
+    ports:
+      - "8001:8001"
+    env_file: .env
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL_EMAIL: ${GROQ_MODEL_EMAIL}
+
+  call-summaries:
+    build: ./call-summaries
+    ports:
+      - "8002:8002"
+    env_file: .env
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL_CALLS: ${GROQ_MODEL_CALLS}
+
+  sales-insights:
+    build: ./sales-insights
+    ports:
+      - "8003:8003"
+    env_file: .env
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL_SALES: ${GROQ_MODEL_SALES}
